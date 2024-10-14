@@ -7,7 +7,7 @@
 </head>
 
 <body style='text-align:center'>
-    <?php   
+    <?php
 
         define("PI",3.1415);
 
