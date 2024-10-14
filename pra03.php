@@ -244,6 +244,26 @@ for($i=0;$i<6;$i++){
 }
 ?>
 
+<h2>矩形含對角線練習+變數可自由調整大小</h2>
+ <?php
+
+$width=11;
+
+for($i=0;$i<$width;$i++){
+    for($j=0;$j<$width;$j++){
+        if($i==0 || $i==($width-1)){
+            echo "*";
+        }else if($j==0 ||$j==($width-1)){
+            echo "*";
+        }else if($i==$j || $j==(($width-1)-$i)){
+            echo "*";
+        }else{
+            echo "&nbsp;";
+        }
+    }
+    echo "<br>";
+}
+?>
 
 
 
