@@ -176,6 +176,7 @@ for($j=1;$j<=9;$j++){
 echo "</table>";
 
 
+
 ?>
 <?php
 //我是第一版
@@ -255,6 +256,56 @@ for($j=0;$j<=9;$j++){
 echo "</table>";
 
 ?>
+
+<style>
+.nine{
+    border-collapse:collapse;
+    margin:20PX;
+
+}
+
+.nine td{
+    border:1px solid #aaa;
+    width:30px;
+    height:30px;
+    text-align: center;
+}
+.nine tr:nth-child(1),
+.nine td:nth-child(1){
+    background:blue;
+    color:white
+}
+
+</style>
+<h2>半邊九九乘法表</h2>
+<?php
+//我是第二版
+echo "<table class='nine'>";
+for($j=0;$j<=9;$j++){
+    echo "<tr>";
+    for($i=0;$i<=9;$i++){
+        echo "<td>";
+        if($j==0 && $i==0){
+            echo "";
+        }elseif($j==0){
+            echo $i;
+        }elseif($i==0){
+            echo $j;
+        }else{
+            if($i<=$j){
+                echo ($j*$i);
+            }
+        }  
+        
+        echo "</td>";
+    }
+    echo "</tr>";
+}
+echo "</table>";
+
+?>
+
+
 
 <?php  
 //<!-- table>tr*9>td*9-->
