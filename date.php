@@ -288,9 +288,118 @@ for($i=0;$i<6;$i++){
 
 
 
+<h1>線上月曆製作-根據不同日期條件加上CSS</h1>
 
+<ul>
+    <li>以表格方式呈現整個月份的日期</li>
+    <li>可以在特殊日期中顯示資訊(假日或紀念日)</li>
+    <li>嘗試以block box或flex box的方式製作月曆</li>
+</ul>
 
+<style>
+    table {
+        border-collapse:collapse;
+    }
+    td{
+        padding: 5px 10px;
+        text-align:center;
+        border:1px solid #999;
+    }
+    .holiday{
+        background: pink;
+        color: #999;
+    }
+    .grey-text{
+        coler: #999;
+    }
+    .today{
+        background: blue;
+        color: white;
+        font-weight:bolder;
+    }
 
+</style>
+
+<h3><?php echo date("m月");?></h3>
+<table>
+<tr>
+    <td></td>
+    <td>日</td>
+    <td>一</td>
+    <td>二</td>
+    <td>三</td>
+    <td>四</td>
+    <td>五</td>
+    <td>六</td>
+</tr>
+<?php
+$d=strtotime("2024-6");
+$firstDayWeek=date("w",strtotime(date("Y-m-1")));
+
+for($i=0;$i<6;$i++){
+    echo "<tr>";
+    echo "<td>";
+    echo $i+1;
+    echo "</td>";
+    for($j=0;$j<7;$j++){
+        echo "<td>";
+        $dayNum=$i*7 + $j +1 - $firstDayWeek;
+        if($dayNum<=date('t') && $dayNum >0){
+            echo $dayNum;
+        }
+        echo "</td>";
+    }
+
+    echo "</tr>";
+
+}
+
+?>
+</table>
+<h3><?php echo date("m月");?></h3>
+<table>
+<tr>
+    <td></td>
+    <td>日</td>
+    <td>一</td>
+    <td>二</td>
+    <td>三</td>
+    <td>四</td>
+    <td>五</td>
+    <td>六</td>
+</tr>
+<?php
+$firstDay=date("Y-m-1");
+$firstDayTime=strtotime($firstDay);
+$firstDayWeek=date("w",strtotime(date("Y-m-1")));
+
+for($i=0;$i<6;$i++){
+    echo "<tr>";
+    echo "<td>";
+    echo $i+1;
+    echo "</td>";
+    for($j=0;$j<7;$j++){
+        //echo "<td class='holiday'>";
+        $cell=$i*7+$j -$firstDayWeek;
+        $theDayTime=strtotime("$cell days".$firstDay);
+
+        //所需樣式css判斷
+        $theMonth=(date("m",$theDayTime)==date("m"))?'':'grey-text';
+        $isToday=(date("Y-m-d",$theDayTime)==date("Y-m-d"))?'today':'';
+        $w=date("w",$theDayTime);
+        $isHoliday=($w==0 || $w==6)?'holiday':'';
+        
+        echo "<td class='$isHoliday $theMonth $isToday'>";
+        echo date("d",$theDayTime);
+        echo "</td>";
+        
+    }
+    echo "</tr>";
+}
+
+?>
+
+</table>
 
     <p>&nbsp;</p>
     <p>&nbsp;</p>
@@ -299,7 +408,5 @@ for($i=0;$i<6;$i++){
     <p>&nbsp;</p>
 
     
-
-
 </body>
 </html>
