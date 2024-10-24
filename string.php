@@ -73,26 +73,20 @@
     $str=mb_substr($str,0,10) . "...";
     echo $str ."<br>";
 
-
     // 三個字算一個
     // 盡量使用MB系列
     $str="偉大的人之所以偉大，是因為他決心成為一個偉大的人";
     $str=mb_substr($str,0,10) . "...";
     /* $str=substr($str,0,10) . "..."; */
     echo $str ."<br>";
-
     ?>
-
-
     <h1>[尋找字串與HTML、css整合應用]</h1>
     <ul>
         <li>給定一個句子，將指定的關鍵字放大</li>
         <li>“學會PHP網頁程式設計，薪水會加倍，工作會好找”</li>
         <li>請將上句中的 “程式設計” 放大字型或變色.</li>
     </ul>
-
     <?php
-
     $str="學會PHP網頁程式設計，薪水會加倍，工作會好找";
     $key="程式設計";
     $large="<span style='font-size:28px;color:blue'>".$key."</span>";
@@ -103,20 +97,11 @@
 
     ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
 
 </body>
 </html>
