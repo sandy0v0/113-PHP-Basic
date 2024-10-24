@@ -157,15 +157,14 @@ echo "<br>";
 
 <?php
 for($i=0;$i<5;$i++){
+    // 從當前日期開始，增加 $i 週的時間。date("Y-m-d") 會返回當前日期（例如：2024-10-24），所以這行的作用是獲取當前日期加上 $i 週後的日期。
     $timestamp=strtotime("+$i weeks".date("Y-m-d"));
+    // 將計算出的時間戳記轉換為「年-月-日」的格式並輸出。這樣會顯示出增加 $i 週後的日期。
     echo date("Y-m-d",$timestamp);
     echo "&nbsp;";
     echo $weekString[date("l")]['fulltext'];
     echo "<br>";
 }
-
-
-
 
 
 
