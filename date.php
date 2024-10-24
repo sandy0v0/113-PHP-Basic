@@ -226,6 +226,72 @@ for($i=0;$i<6;$i++){
 </table>
 
 
+<h1>線上月曆製作-計算開始計算開始與結束日並判斷開始顯示的格子</h1>
+
+<ul>
+    <li>以表格方式呈現整個月份的日期</li>
+    <li>可以在特殊日期中顯示資訊(假日或紀念日)</li>
+    <li>嘗試以block box或flex box的方式製作月曆</li>
+</ul>
+
+<style>
+    table {
+        border-collapse:collapse;
+    }
+    td{
+        padding: 5px 10px;
+        text-align:center;
+        border:1px solid #999;
+    }
+</style>
+
+<h3><?php echo date("m月");?></h3>
+<table>
+<tr>
+    <td></td>
+    <td>日</td>
+    <td>一</td>
+    <td>二</td>
+    <td>三</td>
+    <td>四</td>
+    <td>五</td>
+    <td>六</td>
+</tr>
+<?php
+//t 指定月份的天數，例如1月有31天=最大天數=31，沒有指定就是當天
+// 判斷月份，用任何一天計算即可，想要準確一點的話可以用秒計算
+
+/* $d=strtotime("2021-10-01"); */
+$d=strtotime("2024-6");
+$firstDayWeek=date("w",strtotime(date("Y-m-1")));
+echo $firstDayWeek;
+
+for($i=0;$i<6;$i++){
+    echo "<tr>";
+    echo "<td>";
+    echo $i+1;
+    echo "</td>";   
+    for($j=0;$j<7;$j++){
+        echo "<td>";
+        $dayNum=$i*7 + $j+1-$firstDayWeek;
+        // >=31 用||(or)；>0 用&&(並且)
+        if($dayNum<=date('t') && $dayNum >0){
+            echo $dayNum;
+        }
+        echo "</td>";
+    }
+    echo "</tr>";
+}
+
+?>
+</table>
+
+
+
+
+
+
+
     <p>&nbsp;</p>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
